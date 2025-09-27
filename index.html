@@ -4,8 +4,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="BMI.css">
+    <style>
+        .b {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgba(193, 193, 196, 0.9);
+}
+
+.box {
+    width: 500px;
+    background: #fafafa;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    font-size: 36px;
+    padding: 30px;
+}
+
+.content {
+    padding: 0 30px;
+}
+
+.input {
+    background: #fff;
+    box-shadow: 0px 0px 95px -35px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.input label {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.input input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #4f7df9;
+    width: 50%;
+    text-align: center;
+    font-size: 28px;
+    font-family: "Nunito", sans-serif;
+}
+
+.inputW {
+    background: #fff;
+    box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.inputW label {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.inputW input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #4f7df9;
+    width: 50%;
+    text-align: center;
+    font-size: 28px;
+    font-family: "Nunito", sans-serif;
+}
+
+.inputH {
+    background: #fff;
+    box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.input label {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.inputh input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #4f7df9;
+    width: 50%;
+    text-align: center;
+    font-size: 28px;
+    font-family: "Nunito", sans-serif;
+}
+
+button.calculate {
+    cursor: pointer;
+    font-family: "Nunito", sans-serif;
+    color: #fff;
+    background: #4f7df9;
+    font-size: 16px;
+    border-radius: 7px;
+    padding: 12px;
+    width: 100px;
+    outline: none;
+    border: none;
+    transition: all 0.5s;
+}
+
+button.calculate.hover {
+    background: #0044ff;
+}
+
+.result {
+    padding: 10px 20px;
+}
+
+.result p {
+    font-weight: 600;
+    font-size: 22px;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.result #result {
+    font-size: 36px;
+    font-weight: 900;
+    color: #4f7df9;
+    background-color: #eaeaea;
+    display: inline-block;
+    padding: 7px 20px;
+    border-radius: 55px;
+    margin-bottom: 25px;
+}
+
+#comment {
+    color: #4f7df9;
+    font-weight: 800;
+}
+
+.comment {
+    display: none;
+    border: dashed 1px;
+    border-radius: 7pxx;
+    padding: 5px;
+}
+
+.footer {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.footer-text {
+    text-decoration: none;
+    color: rgba(40, 40, 40, 0.8);
+    font-family: 'poppins', sans-serif;
+    font-weight: 200;
+    font-size: 14px;
+    transition: all 0.5;
+}
+
+.footer-text:hover {
+    color: rgba(40, 40, 40 1);
+}
+
+.gender {
+    display: flex;
+    justify-content: space-around;
+    align-items: auto;
+    align-content: auto;
+    background-color: #fff;
+    box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
+    border-radius: 20px 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.gender .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-top: 7px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.gender.container input {
+    position: auto;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: auto;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.gender .container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+.gender .container input:checked~.checkmark {
+    background-color: #2196f3;
+}
+
+.checkmark::after {
+    content: "";
+    position: auto;
+    display: none;
+}
+
+.gender .container input:checked~.checkmark:after {
+    display: block;
+}
+
+.gender.container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.containerHW {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 300px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid#888;
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: #393c76 -1px 2px 2px 1px;
+}
+
+#modalText {
+    padding-top: 8px;
+    padding-right: 5px;
+    font-size: 18px;
+    font-family: 'poppins', sans-serif;
+    color: rgba(24, 23, 23);
+}
+
+.modal-correct {
+    border: 2px solid green;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.close:hover {
+    color: #d41111;
+}
+    </style>
     <title>BMI Clculator</title>
+    
 </head>
 
 <body>
@@ -63,7 +377,77 @@
             </div>
         </div>
     </div>
-    <script src="BMI.js"></script>
+    <script>
+        var age = document.getElementById("age");
+var height = document.getElementById("height");
+var weight = document.getElementById("weight");
+var male = document.getElementById("m");
+var female = document.getElementById("f");
+var form = document.getElementById("form");
+let resultArea = document.querySelector(".comment");
+
+modalContent = document.querySelector(".modal-ontent");
+modaltext = document.querySelector("#modalText");
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+
+function calculate() {
+
+    if (age.value == '' || height.value == '' || weight.value == '' || (male.checked == false && female.checked == false)) {
+        modal.style.display = "block";
+        modalText.innerHTML = 'All field are required!';
+
+    } else {
+        countBmi();
+    }
+}
+
+function countBmi() {
+    var p = [age.value, height.value, weight.value];
+    if (male.checked) {
+        p.push("male");
+
+    } else if (female.checked) {
+        p.push("female");
+
+
+    }
+
+    var bmi = Number(p[2]) / (Number(p[1]) / 100 * Number(p[1]) / 100);
+
+    var result = '';
+    if (bmi < 18.5) {
+        result = 'Underweight';
+    } else if (18.5 <= bmi && bmi <= 24.9) {
+        result = 'Healthy';
+    } else if (25 <= bmi && bmi <= 29.9) {
+        result = 'Overweight';
+    } else if (30 <= bmi && bmi <= 34.9) {
+        result = 'obese';
+    } else if (35 <= bmi) {
+        result = 'Extremely Obese';
+    }
+
+    resultArea.style.display = "block";
+    document.querySelector(" .comment").innerHTML = `you are <span id="comment">${result}</span>`;
+    document.querySelector("#result").innerHTML = bmi.toFixed(2);
+
+}
+
+
+span.onclick = function() {
+    modal.style.display = "none";
+
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+        
+    </script>
 </body>
+
 
 </html>
